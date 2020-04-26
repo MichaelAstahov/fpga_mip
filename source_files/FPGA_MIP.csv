@@ -1,0 +1,102 @@
+# Copyright (C) 2019  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and any partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details, at
+# https://fpgasoftware.intel.com/eula.
+
+# Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+# File: C:\Users\user\Desktop\final project\fpga_mip\source_files\FPGA_MIP.csv
+# Generated on: Thu Apr 23 19:33:48 2020
+
+# Note: The column header names should not be changed if you wish to import this .csv file into the Quartus Prime software.
+
+To,Direction,Location,I/O Bank,VREF Group,Fitter Location,I/O Standard,Reserved,Current Strength,Slew Rate,Differential Pair,Strict Preservation
+clk_50,Input,PIN_Y2,2,B2_N0,PIN_Y2,2.5 V,,,,,
+clk_50_pll,Input,PIN_AG14,3,B3_N0,PIN_AG14,2.5 V,,,,,
+key[3],Input,PIN_R24,5,B5_N0,PIN_R24,2.5 V,,,,,
+key[2],Input,PIN_N21,6,B6_N2,PIN_N21,2.5 V,,,,,
+key[1],Input,PIN_M21,6,B6_N1,PIN_M21,2.5 V,,,,,
+key[0],Input,PIN_M23,6,B6_N2,PIN_M23,2.5 V,,,,,
+led_g[8],Output,PIN_F17,7,B7_N2,PIN_F17,2.5 V,,,,,
+led_g[7],Output,PIN_G21,7,B7_N1,PIN_G21,2.5 V,,,,,
+led_g[6],Output,PIN_G22,7,B7_N2,PIN_G22,2.5 V,,,,,
+led_g[5],Output,PIN_G20,7,B7_N1,PIN_G20,2.5 V,,,,,
+led_g[4],Output,PIN_H21,7,B7_N2,PIN_H21,2.5 V,,,,,
+led_g[3],Output,PIN_E24,7,B7_N1,PIN_E24,2.5 V,,,,,
+led_g[2],Output,PIN_E25,7,B7_N1,PIN_E25,2.5 V,,,,,
+led_g[1],Output,PIN_E22,7,B7_N0,PIN_E22,2.5 V,,,,,
+led_g[0],Output,PIN_E21,7,B7_N0,PIN_E21,2.5 V,,,,,
+led_r[17],Output,PIN_H15,7,B7_N2,PIN_H15,2.5 V,,,,,
+led_r[16],Output,PIN_G16,7,B7_N2,PIN_G16,2.5 V,,,,,
+led_r[15],Output,PIN_G15,7,B7_N2,PIN_G15,2.5 V,,,,,
+led_r[14],Output,PIN_F15,7,B7_N2,PIN_F15,2.5 V,,,,,
+led_r[13],Output,PIN_H17,7,B7_N2,PIN_H17,2.5 V,,,,,
+led_r[12],Output,PIN_J16,7,B7_N2,PIN_J16,2.5 V,,,,,
+led_r[11],Output,PIN_H16,7,B7_N2,PIN_H16,2.5 V,,,,,
+led_r[10],Output,PIN_J15,7,B7_N2,PIN_J15,2.5 V,,,,,
+led_r[9],Output,PIN_G17,7,B7_N1,PIN_G17,2.5 V,,,,,
+led_r[8],Output,PIN_J17,7,B7_N2,PIN_J17,2.5 V,,,,,
+led_r[7],Output,PIN_H19,7,B7_N2,PIN_H19,2.5 V,,,,,
+led_r[6],Output,PIN_J19,7,B7_N2,PIN_J19,2.5 V,,,,,
+led_r[5],Output,PIN_E18,7,B7_N1,PIN_E18,2.5 V,,,,,
+led_r[4],Output,PIN_F18,7,B7_N1,PIN_F18,2.5 V,,,,,
+led_r[3],Output,PIN_F21,7,B7_N0,PIN_F21,2.5 V,,,,,
+led_r[2],Output,PIN_E19,7,B7_N0,PIN_E19,2.5 V,,,,,
+led_r[1],Output,PIN_F19,7,B7_N0,PIN_F19,2.5 V,,,,,
+led_r[0],Output,PIN_G19,7,B7_N2,PIN_G19,2.5 V,,,,,
+sw[17],Input,PIN_Y23,5,B5_N2,PIN_Y23,2.5 V,,,,,
+sw[16],Input,PIN_Y24,5,B5_N2,PIN_Y24,2.5 V,,,,,
+sw[15],Input,PIN_AA22,5,B5_N2,PIN_AA22,2.5 V,,,,,
+sw[14],Input,PIN_AA23,5,B5_N2,PIN_AA23,2.5 V,,,,,
+sw[13],Input,PIN_AA24,5,B5_N2,PIN_AA24,2.5 V,,,,,
+sw[12],Input,PIN_AB23,5,B5_N2,PIN_AB23,2.5 V,,,,,
+sw[11],Input,PIN_AB24,5,B5_N2,PIN_AB24,2.5 V,,,,,
+sw[10],Input,PIN_AC24,5,B5_N2,PIN_AC24,2.5 V,,,,,
+sw[9],Input,PIN_AB25,5,B5_N1,PIN_AB25,2.5 V,,,,,
+sw[8],Input,PIN_AC25,5,B5_N2,PIN_AC25,2.5 V,,,,,
+sw[7],Input,PIN_AB26,5,B5_N1,PIN_AB26,2.5 V,,,,,
+sw[6],Input,PIN_AD26,5,B5_N2,PIN_AD26,2.5 V,,,,,
+sw[5],Input,PIN_AC26,5,B5_N2,PIN_AC26,2.5 V,,,,,
+sw[4],Input,PIN_AB27,5,B5_N1,PIN_AB27,2.5 V,,,,,
+sw[3],Input,PIN_AD27,5,B5_N2,PIN_AD27,2.5 V,,,,,
+sw[2],Input,PIN_AC27,5,B5_N2,PIN_AC27,2.5 V,,,,,
+sw[1],Input,PIN_AC28,5,B5_N2,PIN_AC28,2.5 V,,,,,
+sw[0],Input,PIN_AB28,5,B5_N1,PIN_AB28,2.5 V,,,,,
+vga_b[7],Output,PIN_D12,8,B8_N0,PIN_AD7,,,,,,
+vga_b[6],Output,PIN_D11,8,B8_N1,PIN_C8,,,,,,
+vga_b[5],Output,PIN_C12,8,B8_N0,PIN_C10,,,,,,
+vga_b[4],Output,PIN_A11,8,B8_N0,PIN_D10,,,,,,
+vga_b[3],Output,PIN_B11,8,B8_N0,PIN_C4,,,,,,
+vga_b[2],Output,PIN_C11,8,B8_N1,PIN_A8,,,,,,
+vga_b[1],Output,PIN_A10,8,B8_N0,PIN_E12,,,,,,
+vga_b[0],Output,PIN_B10,8,B8_N0,PIN_E10,,,,,,
+vga_blank,Output,PIN_F11,8,B8_N1,PIN_C16,,,,,,
+vga_clk,Output,PIN_A12,8,B8_N0,PIN_AE23,,,,,,
+vga_g[7],Output,PIN_C9,8,B8_N1,PIN_AF5,,,,,,
+vga_g[6],Output,PIN_F10,8,B8_N1,PIN_C6,,,,,,
+vga_g[5],Output,PIN_B8,8,B8_N1,PIN_D8,,,,,,
+vga_g[4],Output,PIN_C8,8,B8_N1,PIN_AD4,,,,,,
+vga_g[3],Output,PIN_H12,8,B8_N1,PIN_AG3,,,,,,
+vga_g[2],Output,PIN_F8,8,B8_N2,PIN_AF4,,,,,,
+vga_g[1],Output,PIN_G11,8,B8_N1,PIN_A11,,,,,,
+vga_g[0],Output,PIN_G8,8,B8_N2,PIN_AE4,,,,,,
+vga_hs,Output,PIN_G13,8,B8_N0,PIN_G18,,,,,,
+vga_r[7],Output,PIN_H10,8,B8_N1,PIN_D5,,,,,,
+vga_r[6],Output,PIN_H8,8,B8_N2,PIN_F12,,,,,,
+vga_r[5],Output,PIN_J12,8,B8_N0,PIN_AE5,,,,,,
+vga_r[4],Output,PIN_G10,8,B8_N1,PIN_B11,,,,,,
+vga_r[3],Output,PIN_F12,8,B8_N1,PIN_C7,,,,,,
+vga_r[2],Output,PIN_D10,8,B8_N1,PIN_C5,,,,,,
+vga_r[1],Output,PIN_E11,8,B8_N1,PIN_E4,,,,,,
+vga_r[0],Output,PIN_E12,8,B8_N1,PIN_B8,,,,,,
+vga_sync,Output,PIN_C10,8,B8_N0,PIN_G14,,,,,,
+vga_vs,Output,PIN_C13,8,B8_N0,PIN_E17,,,,,,
