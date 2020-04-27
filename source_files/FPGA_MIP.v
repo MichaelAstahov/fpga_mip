@@ -27,6 +27,7 @@ module FPGA_MIP (
 	wire 			 rst;
 	wire 			 dly_rst;
 	
+//	VGA
 	wire			 vga_ctrl_clk;
 	wire 			 pll_lock;
 	wire [7:0]	     i_red;
@@ -36,13 +37,13 @@ module FPGA_MIP (
 	wire [9:0]	     coord_y;
 	wire [18:0]	  	 mVGA_ADDR;
 	
-	// Binary
-//	wire [9:0] 		BIN_THRESHOLD;
-//	wire			mvalue_Binary;
-//	wire [9:0] 		Bin_image;
-	// dilation from binary
-//	wire 			mvalue_dilation;
-//	wire [9:0] 		fDilation;
+//	Binary
+	wire [9:0] 		BIN_THRESHOLD;
+	wire			mvalue_Binary;
+	wire [9:0] 		Bin_image;
+//	Dilation from binary
+	wire 			mvalue_dilation;
+	wire [9:0] 		fDilation;
 
 
 //////////////////////////////////////////////////////////////////	
@@ -64,27 +65,38 @@ module FPGA_MIP (
 // Modules Instantiation
 //////////////////////////////////////////////////////////////////	
 
-//	reset delay gives some time for peripherals to initialize
+//	PLL creates suitable vga_clk for the design
+	pll	pll_inst (
+		.areset (rst),
+		.inclk0 (clk_50_pll),
+		.c0 	(vga_ctrl_clk),
+		.locked (pll_lock)
+	);
+
+//	DDR creates clock for the DAC output
+	ddr	ddr_inst (
+		.aclr 		(rst),
+		.datain_h   (1'b1),
+		.datain_l   (1'b0),
+		.outclock   (vga_ctrl_clk),
+		.dataout    (vga_clk)
+	);
+
+
+//	Reset Delay gives some time for peripherals to initialize
 	rst_dly reset_delay_inst (
 		.clk	(clk_50),
 		.irst	(rst),
 		.orst	(dly_rst)
 	);
 
-	pll	pll_inst (
-		.areset (dly_rst),
-		.inclk0 (clk_50_pll),
-		.c0 	(vga_ctrl_clk),
-		.c1 	(vga_clk),
-		.locked (pll_lock)
-	);
-	
+
 			
 //	handles the input image rom read output
 //	later will handle the filtered image ram.
 	memory memory_inst(
 		.rstn		(~dly_rst),
-		.i_vga_clk	(vga_clk),
+		.i_vga_clk	(vga_ctrl_clk),
 		.i_vga_addr	(mVGA_ADDR),
 		
 		.o_red		(i_red),
@@ -112,42 +124,23 @@ module FPGA_MIP (
 		.vga_blank	(vga_blank)
 	);
 	
-//	// vga controller
-//	vga_ctrl vga_ctrl_inst (
-//		.clk			(vga_ctrl_clk),
-//		.rstn			(~dly_rst),	
-//		.i_red		(fDilation),
-//		.i_green		(fDilation),
-//		.i_blue		(fDilation),
-//		
-//		.px			(coord_x),
-//		.py			(coord_y),
-//		.vga_r		(vga_r),
-//		.vga_g		(vga_g),
-//		.vga_b		(vga_b),
-//		.vga_h_sync	(vga_hs),
-//		.vga_v_sync	(vga_vs),
-//		.vga_sync	(vga_sync),
-//		.vga_blank	(vga_blank)
-//	);
-//		
-//		
-//	// binary
-//	binary_convert binary_inst (
-//		.clk				(vga_ctrl_clk),
-//		.rstn				(~dly_rst),
-//		.input_data		(i_green),
-//		.thresh			(BIN_THRESHOLD),
-//		.output_data	(Bin_image)
-//	);
-//		
-//	
-//	dilation_filter dilation_inst (
-//		.clk				(vga_ctrl_clk),
-//		.rstn				(~dly_rst),
-//		.input_data		(Bin_image),
-//		.output_data	(fDilation)
-//	);
+	
+//	binary
+	binary_convert binary_inst (
+		.clk			(vga_ctrl_clk),
+		.rstn			(~dly_rst),
+		.input_data		(i_green),
+		.thresh			(BIN_THRESHOLD),
+		.output_data	(Bin_image)
+	);
+		
+	
+	dilation_filter dilation_inst (
+		.clk			(vga_ctrl_clk),
+		.rstn			(~dly_rst),
+		.input_data		(Bin_image),
+		.output_data	(fDilation)
+	);
 
 
 endmodule
