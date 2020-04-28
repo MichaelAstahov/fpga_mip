@@ -1,6 +1,6 @@
 module memory (	
 //	Inputs
-	input	rstn,
+	input	rst,
 	input	i_vga_clk,
 	input	[18:0] i_vga_addr,
 //	Read Outside
@@ -15,8 +15,8 @@ module memory (
 	wire [7:0] rom_data;
 
 //	Logic Blocks
-	always @(posedge i_vga_clk or negedge rstn) begin
-		if(!rstn) begin
+	always @(posedge i_vga_clk or posedge rst) begin
+		if(rst) begin
 			o_red			<=	0;
 			o_green			<=	0;
 			o_blue			<=	0;

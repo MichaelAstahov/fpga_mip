@@ -22,7 +22,7 @@ https://fpgasoftware.intel.com/eula.
 (header "symbol" (version "1.2"))
 (symbol
 	(rect 0 0 192 128)
-	(text "ddr" (rect 87 0 108 16)(font "Arial" (font_size 10)))
+	(text "ddr_output" (rect 66 0 137 16)(font "Arial" (font_size 10)))
 	(text "inst" (rect 8 112 25 124)(font "Arial" ))
 	(port
 		(pt 0 48)

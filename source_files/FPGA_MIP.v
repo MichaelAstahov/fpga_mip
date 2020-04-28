@@ -25,7 +25,6 @@ module FPGA_MIP (
 //////////////////////////////////////////////////////////////////
 
 	wire 			 rst;
-	wire 			 dly_rst;
 	
 //	VGA
 	wire			 vga_ctrl_clk;
@@ -51,7 +50,7 @@ module FPGA_MIP (
 //////////////////////////////////////////////////////////////////	
 
 	assign rst 			= sw[0];					//active high reset controlled by sw[0].
-	assign led_g[0] 	= dly_rst; 					//indicator for reset_delay block.
+	assign led_g[0] 	= rst; 					//indicator for reset_delay block.
 	assign led_g[1]     = pll_lock;					//indicator for pll working properly
 
 	assign led_r = sw;								// Send switches to red leds 
@@ -65,37 +64,28 @@ module FPGA_MIP (
 // Modules Instantiation
 //////////////////////////////////////////////////////////////////	
 
-//	PLL creates suitable vga_clk for the design
+//	PLL creates suitable vga__ctrl_clk for the design
 	pll	pll_inst (
 		.areset (rst),
 		.inclk0 (clk_50_pll),
-		.c0 	(vga_ctrl_clk),
+		.c0 	(vga_ctrl_clk),		//main clock
 		.locked (pll_lock)
 	);
 
 //	DDR creates clock for the DAC output
-	ddr	ddr_inst (
+	ddr_output	ddr_output_inst (
 		.aclr 		(rst),
 		.datain_h   (1'b1),
 		.datain_l   (1'b0),
 		.outclock   (vga_ctrl_clk),
-		.dataout    (vga_clk)
+		.dataout    (vga_clk)	//DAC output clock
 	);
-
-
-//	Reset Delay gives some time for peripherals to initialize
-	rst_dly reset_delay_inst (
-		.clk	(clk_50),
-		.irst	(rst),
-		.orst	(dly_rst)
-	);
-
 
 			
 //	handles the input image rom read output
 //	later will handle the filtered image ram.
 	memory memory_inst(
-		.rstn		(~dly_rst),
+		.rst		(rst),
 		.i_vga_clk	(vga_ctrl_clk),
 		.i_vga_addr	(mVGA_ADDR),
 		
@@ -108,7 +98,7 @@ module FPGA_MIP (
 //	vga controller
 	vga_ctrl vga_ctrl_inst (
 		.clk		(vga_ctrl_clk),
-		.rstn		(~dly_rst),	
+		.rst		(rst),	
 		.i_red		(i_red),
 		.i_green	(i_green),
 		.i_blue		(i_blue),
@@ -128,7 +118,7 @@ module FPGA_MIP (
 //	binary
 	binary_convert binary_inst (
 		.clk			(vga_ctrl_clk),
-		.rstn			(~dly_rst),
+		.rst			(rst),
 		.input_data		(i_green),
 		.thresh			(BIN_THRESHOLD),
 		.output_data	(Bin_image)
@@ -137,7 +127,7 @@ module FPGA_MIP (
 	
 	dilation_filter dilation_inst (
 		.clk			(vga_ctrl_clk),
-		.rstn			(~dly_rst),
+		.rst			(rst),
 		.input_data		(Bin_image),
 		.output_data	(fDilation)
 	);

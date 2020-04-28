@@ -4,7 +4,7 @@
 // MODULE: ALTDDIO_OUT 
 
 // ============================================================
-// File Name: ddr.v
+// File Name: ddr_output.v
 // Megafunction Name(s):
 // 			ALTDDIO_OUT
 //
@@ -32,7 +32,7 @@
 //refer to the applicable agreement for further details, at
 //https://fpgasoftware.intel.com/eula.
 
-module ddr (
+module ddr_output (
 	aclr,
 	datain_h,
 	datain_l,
@@ -70,12 +70,12 @@ endmodule
 // Retrieval info: CONNECT: dataout 0 0 1 0 @dataout 0 0 1 0
 // Retrieval info: USED_PORT: outclock 0 0 0 0 INPUT_CLK_EXT NODEFVAL "outclock"
 // Retrieval info: CONNECT: @outclock 0 0 0 0 outclock 0 0 0 0
-// Retrieval info: GEN_FILE: TYPE_NORMAL ddr.v TRUE FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL ddr.qip TRUE FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL ddr.bsf TRUE TRUE
-// Retrieval info: GEN_FILE: TYPE_NORMAL ddr_inst.v TRUE TRUE
-// Retrieval info: GEN_FILE: TYPE_NORMAL ddr_bb.v TRUE TRUE
-// Retrieval info: GEN_FILE: TYPE_NORMAL ddr.inc TRUE TRUE
-// Retrieval info: GEN_FILE: TYPE_NORMAL ddr.cmp TRUE TRUE
-// Retrieval info: GEN_FILE: TYPE_NORMAL ddr.ppf TRUE FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL ddr_output.v TRUE FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL ddr_output.qip TRUE FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL ddr_output.bsf TRUE TRUE
+// Retrieval info: GEN_FILE: TYPE_NORMAL ddr_output_inst.v TRUE TRUE
+// Retrieval info: GEN_FILE: TYPE_NORMAL ddr_output_bb.v TRUE TRUE
+// Retrieval info: GEN_FILE: TYPE_NORMAL ddr_output.inc FALSE TRUE
+// Retrieval info: GEN_FILE: TYPE_NORMAL ddr_output.cmp FALSE TRUE
+// Retrieval info: GEN_FILE: TYPE_NORMAL ddr_output.ppf TRUE FALSE
 // Retrieval info: LIB_FILE: altera_mf

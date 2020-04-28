@@ -1,6 +1,6 @@
 module vga_ctrl(
 	input clk, 			// 25.2 MHz clock
-	input rstn,
+	input rst,
 	input [7:0] i_red,
 	input [7:0] i_green,
 	input [7:0] i_blue,
@@ -46,8 +46,8 @@ module vga_ctrl(
 	parameter H_SYNC_START = 659;
 	parameter H_SYNC_WIDTH =  96;
 
-	always @(posedge clk or negedge rstn) begin
-		if(!rstn) begin
+	always @(posedge clk or posedge rst) begin
+		if(rst) begin
 			h_count <= 10'h000;
 			vga_h_sync <= 1'b0;
 		end else begin
@@ -77,8 +77,8 @@ module vga_ctrl(
 	parameter V_SYNC_WIDTH =   2;
 	parameter H_START 	   = 699;
 
-	always @(posedge clk or negedge rstn) begin
-		if (!rstn) begin
+	always @(posedge clk or posedge rst) begin
+		if (rst) begin
 			v_count <= 10'h0000;
 			vga_v_sync <= 1'b0;
 		end else if (h_count == H_START) begin

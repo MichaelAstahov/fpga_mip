@@ -1,6 +1,6 @@
 module dilation_filter (
 	input			 clk,
-	input			 rstn,
+	input			 rst,
 	input 	  [9:0]  input_data,
 	output reg [9:0] output_data
 );
@@ -19,9 +19,9 @@ module dilation_filter (
 		.taps2x(linebuffer2)
 	);
 
-	always@(posedge clk, negedge rstn) 
+	always@(posedge clk, posedge rst) 
 	begin
-		if(!rstn) begin
+		if(rst) begin
 			Pixel_1 <= 10'b1111111111;
 			Pixel_2 <= 10'b1111111111;
 			Pixel_3 <= 10'b1111111111;
