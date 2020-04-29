@@ -1,6 +1,6 @@
 module FPGA_MIP (
 //	Clock Input
-	input 				clk_50 ,			// 50 MHz for TOP
+	input 				clk_50,			// 50 MHz for TOP
 	input 				clk_50_pll,     	// 50 MHz for PLL
 //	Push Button
 	input [3:0] 		key,      	 		// Pushbutton[3:0]
