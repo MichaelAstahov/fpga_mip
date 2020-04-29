@@ -50,13 +50,13 @@ module FPGA_MIP (
 //////////////////////////////////////////////////////////////////	
 
 	assign rst 			= sw[0];					//active high reset controlled by sw[0].
-	assign led_g[0] 	= rst; 					//indicator for reset_delay block.
-	assign led_g[1]     = pll_lock;					//indicator for pll working properly
+	assign led_g[0] 	= rst; 						//indicator for reset.
+	assign led_g[1]     = pll_lock;					//indicator for pll working properly.
 
-	assign led_r = sw;								// Send switches to red leds 
-	assign led_g[8:2] = 8'b0;				   		// Turn off unused green leds
+	assign led_r = sw;								// Send switches to red leds.
+	assign led_g[8:2] = 6'b0;				   		// Turn off unused green leds.
 	
-	assign mVGA_ADDR = coord_y*640 + coord_x;    	// handles setting the display pixels
+	assign mVGA_ADDR = coord_y*640 + coord_x;    	// handles setting the display pixels.
 	
 	assign BIN_THRESHOLD = 10'b0001010100;
 
@@ -66,10 +66,10 @@ module FPGA_MIP (
 
 //	PLL creates suitable vga__ctrl_clk for the design
 	pll	pll_inst (
-		.areset (rst),
-		.inclk0 (clk_50_pll),
-		.c0 	(vga_ctrl_clk),		//main clock
-		.locked (pll_lock)
+		.areset   (rst),
+		.inclk0   (clk_50_pll),
+		.c0 	  (vga_ctrl_clk),		//main clock
+		.locked   (pll_lock)
 	);
 
 //	DDR creates clock for the DAC output
@@ -86,8 +86,8 @@ module FPGA_MIP (
 //	later will handle the filtered image ram.
 	memory memory_inst(
 		.rst		(rst),
-		.i_vga_clk	(vga_ctrl_clk),
-		.i_vga_addr	(mVGA_ADDR),
+		.clk		(vga_ctrl_clk),
+		.vga_addr	(mVGA_ADDR),
 		
 		.o_red		(i_red),
 		.o_green	(i_green),
