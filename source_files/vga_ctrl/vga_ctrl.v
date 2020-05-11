@@ -4,6 +4,7 @@ module vga_ctrl(
 	input [7:0] i_red,
 	input [7:0] i_green,
 	input [7:0] i_blue,
+	input 		enable,
 	
 //	pixel coordinates
 	output [9:0] px,
@@ -52,16 +53,18 @@ module vga_ctrl(
 			vga_h_sync <= 1'b0;
 		end else begin
       // H_Sync Counter
-			if (h_count < H_SYNC_TOTAL-1) begin
-				h_count <= h_count + 1'b1;
-			end else begin
-				h_count <= 10'h0000;
-			end
+	  		if (enable) begin
+				if (h_count < H_SYNC_TOTAL-1) begin
+					h_count <= h_count + 1'b1;
+				end else begin
+					h_count <= 10'h0000;
+				end
 		
-			if (h_count >= H_SYNC_START && h_count < H_SYNC_START+H_SYNC_WIDTH) begin
-				vga_h_sync = 1'b0;
-			end else begin
-			vga_h_sync <= 1'b1;
+				if (h_count >= H_SYNC_START && h_count < H_SYNC_START+H_SYNC_WIDTH) begin
+					vga_h_sync = 1'b0;
+				end else begin
+					vga_h_sync <= 1'b1;
+				end
 			end
 		end
 	end
@@ -81,18 +84,20 @@ module vga_ctrl(
 		if (rst) begin
 			v_count <= 10'h0000;
 			vga_v_sync <= 1'b0;
-		end else if (h_count == H_START) begin
+		end else if (enable) begin
+			if (h_count == H_START) begin
 			// V_Sync Counter
-			if (v_count < V_SYNC_TOTAL-1) begin
-				v_count <= v_count + 1'b1;
-			end else begin
-				v_count <= 10'h0000;
-			end
+				if (v_count < V_SYNC_TOTAL-1) begin
+					v_count <= v_count + 1'b1;
+				end else begin
+					v_count <= 10'h0000;
+				end
 
-			if (v_count >= V_SYNC_START && v_count < V_SYNC_START+V_SYNC_WIDTH) begin
-				vga_v_sync = 1'b0;
-			end else begin
-				vga_v_sync <= 1'b1;
+				if (v_count >= V_SYNC_START && v_count < V_SYNC_START+V_SYNC_WIDTH) begin
+					vga_v_sync = 1'b0;
+				end else begin
+					vga_v_sync <= 1'b1;
+				end
 			end
 		end
 	end

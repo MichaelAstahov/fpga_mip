@@ -1,14 +1,14 @@
 module dilation_filter (
 	input			 clk,
 	input			 rst,
-	input 	   [9:0] input_data,
-	output reg [9:0] output_data
+	input 	   [7:0] input_data,
+	output reg [7:0] output_data
 );
 
-	wire [9:0] linebuffer0;
-	wire [9:0] linebuffer1;
-	wire [9:0] linebuffer2;
-	reg  [9:0] Pixel_1, Pixel_2, Pixel_3, Pixel_4, Pixel_5, Pixel_6, Pixel_7, Pixel_8, Pixel_9;
+	wire [7:0] linebuffer0;
+	wire [7:0] linebuffer1;
+	wire [7:0] linebuffer2;
+	reg  [7:0] Pixel_1, Pixel_2, Pixel_3, Pixel_4, Pixel_5, Pixel_6, Pixel_7, Pixel_8, Pixel_9;
 
 	linebuffer b0 (
 		.clken		(1'b1),
@@ -22,15 +22,15 @@ module dilation_filter (
 	always@(posedge clk, posedge rst) 
 	begin
 		if(rst) begin
-			Pixel_1 <= 10'b1111111111;
-			Pixel_2 <= 10'b1111111111;
-			Pixel_3 <= 10'b1111111111;
-			Pixel_4 <= 10'b1111111111;
-			Pixel_5 <= 10'b1111111111;
-			Pixel_6 <= 10'b1111111111;
-			Pixel_7 <= 10'b1111111111;
-			Pixel_8 <= 10'b1111111111;
-			Pixel_9 <= 10'b1111111111;
+			Pixel_1 <= 8'hff;
+			Pixel_2 <= 8'hff;
+			Pixel_3 <= 8'hff;
+			Pixel_4 <= 8'hff;
+			Pixel_5 <= 8'hff;
+			Pixel_6 <= 8'hff;
+			Pixel_7 <= 8'hff;
+			Pixel_8 <= 8'hff;
+			Pixel_9 <= 8'hff;
 		end else begin    
 			Pixel_1 <= Pixel_2;
 			Pixel_2 <= Pixel_3;
