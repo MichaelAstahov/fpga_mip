@@ -7,8 +7,7 @@ module vga_ctrl(
 	input 		enable,
 	
 //	pixel coordinates
-	output [9:0] px,
-	output [9:0] py,
+	output [19-1:0] vga_addr,
 	
 //	VGA Side
     output  [7:0] vga_r,
@@ -30,22 +29,23 @@ module vga_ctrl(
 	assign vga_blank	=	vga_h_sync & vga_v_sync;
 	assign vga_sync		=	1'b0;
 
-	assign px = h_count;
-	assign py = v_count;
+
+	assign vga_addr = v_count*640 + h_count; 
 
 
-// Horizontal sync
 
-/* Generate Horizontal and Vertical Timing Signals for Video Signal
-* h_count counts pixels (640 + extra time for sync signals)
-* 
-*  horiz_sync  ------------------------------------__________--------
-*  h_count       0                640             659       755    799
-*/
-	parameter H_SYNC_TOTAL = 800;
-	parameter H_PIXELS 	   = 640;
-	parameter H_SYNC_START = 659;
-	parameter H_SYNC_WIDTH =  96;
+//! Generate Horizontal and Vertical Timing Signals for Video Signal
+	//* Horizontal sync
+
+	//* h_count counts pixels (640 + extra time for sync signals)
+	//* 
+	//*  horiz_sync  ------------------------------------__________--------
+	//*  h_count       0                640             659       755    799
+
+	localparam H_SYNC_TOTAL = 800;
+	localparam H_PIXELS 	   = 640;
+	localparam H_SYNC_START = 659;
+	localparam H_SYNC_WIDTH =  96;
 
 	always @(posedge clk or posedge rst) begin
 		if(rst) begin
@@ -69,16 +69,18 @@ module vga_ctrl(
 		end
 	end
 	
-/*  
-*  vertical_sync      -----------------------------------------------_______------------
-*  v_count             0                                      480    493-494          524
-*/
+	
+	//* Vertical sync
+  
+	//*  vertical_sync      -----------------------------------------------_______------------
+	//*  v_count             0                                      480    493-494          524
 
-	parameter V_SYNC_TOTAL = 525;
-	parameter V_PIXELS     = 480;
-	parameter V_SYNC_START = 493;
-	parameter V_SYNC_WIDTH =   2;
-	parameter H_START 	   = 699;
+
+	localparam V_SYNC_TOTAL = 525;
+	localparam V_PIXELS     = 480;
+	localparam V_SYNC_START = 493;
+	localparam V_SYNC_WIDTH =   2;
+	localparam H_START 	   = 699;
 
 	always @(posedge clk or posedge rst) begin
 		if (rst) begin

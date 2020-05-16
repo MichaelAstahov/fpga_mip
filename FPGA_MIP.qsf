@@ -134,14 +134,19 @@ set_location_assignment PIN_G13 -to vga_hs
 set_location_assignment PIN_C10 -to vga_sync
 set_location_assignment PIN_C13 -to vga_vs
 set_global_assignment -name CYCLONEII_OPTIMIZATION_TECHNIQUE SPEED
-set_global_assignment -name VERILOG_FILE source_files/FPGA_MIP.v
-set_global_assignment -name VERILOG_FILE source_files/vga_ctrl/vga_ctrl.v
-set_global_assignment -name VERILOG_FILE source_files/memory/memory.v
-set_global_assignment -name VERILOG_FILE source_files/img_proc/dilation_filter.v
-set_global_assignment -name VERILOG_FILE source_files/img_proc/binary_convert.v
-set_global_assignment -name QIP_FILE source_files/pll/pll.qip
-set_global_assignment -name QIP_FILE source_files/memory/img_rom.qip
-set_global_assignment -name QIP_FILE source_files/img_proc/linebuffer.qip
+set_global_assignment -name ENABLE_SIGNALTAP ON
+set_global_assignment -name USE_SIGNALTAP_FILE signal_tap/stp2.stp
 set_global_assignment -name QIP_FILE source_files/ddr_output/ddr_output.qip
+set_global_assignment -name QIP_FILE source_files/img_proc/linebuffer.qip
+set_global_assignment -name VERILOG_FILE source_files/img_proc/dilation_filter.v
+set_global_assignment -name VERILOG_FILE source_files/img_proc/erosion_filter.v
+set_global_assignment -name VERILOG_FILE source_files/vga_ctrl/vga_ctrl.v
 set_global_assignment -name QIP_FILE source_files/memory/img_ram.qip
+set_global_assignment -name QIP_FILE source_files/memory/img_rom.qip
+set_global_assignment -name VERILOG_FILE source_files/memory/memory.v
+set_global_assignment -name VERILOG_FILE source_files/mip_control.v
+set_global_assignment -name VERILOG_FILE source_files/FPGA_MIP.v
+set_global_assignment -name QIP_FILE source_files/pll/pll.qip
+set_global_assignment -name SIGNALTAP_FILE signal_tap/stp2.stp
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name SLD_FILE db/stp2_auto_stripped.stp
