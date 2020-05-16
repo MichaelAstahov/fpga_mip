@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP4CE115F29) Path("C:/Users/user/Desktop/final project/fpga_mip/output_files/") File("FPGA_MIP.sof") MfrSpec(OpMask(1));
+		Device PartName(EP4CE115F29) Path("C:/Users/Michael/Desktop/fpga_mip/output_files/") File("FPGA_MIP.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

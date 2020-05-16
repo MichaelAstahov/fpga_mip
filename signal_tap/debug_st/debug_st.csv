@@ -1,0 +1,18 @@
+# system info debug_st on 2020.05.11.21:12:54
+system_info:
+name,value
+DEVICE,EP4CE115F29C7
+DEVICE_FAMILY,Cyclone IV E
+GENERATION_ID,1589220773
+#
+#
+# Files generated for debug_st on 2020.05.11.21:12:54
+files:
+filepath,kind,attributes,module,is_top
+simulation/debug_st.v,VERILOG,,debug_st,true
+simulation/submodules/sld_signaltap.v,VERILOG,,sld_signaltap,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+debug_st.signaltap_ii_logic_analyzer_0,sld_signaltap
