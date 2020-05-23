@@ -47,7 +47,6 @@ module FPGA_MIP (
 		.pll_lock      (pll_lock),
 		.dilation_done (dilation_done),
 		.erosion_done  (erosion_done),
-//		.vga_en        (vga_en),
 		//* Output Flags
 		.rom_flag      (rom_flag),
 		.dilation_en   (dilation_en),
@@ -68,7 +67,8 @@ module FPGA_MIP (
 	pll	PLL_Inst (
 		.areset   (rst),
 		.inclk0   (clk_50_pll),
-		.c0 	  (vga_ctrl_clk),	// main clock
+		.c0 	  (vga_ctrl_clk),	// main clock - 25.2MHz: 640x480
+	//	.c1		  (vga_ctrl_clk),	// main clock - 65MHz  : 1024x768
 		.locked   (pll_lock)
 	);
 //!
@@ -94,10 +94,6 @@ module FPGA_MIP (
 	wire [8-1:0]	blue;
 	wire [19-1:0]   vga_addr;  // handles setting the display pixels.
 	wire [8-1:0]    orig_img;
-//	wire		    vga_en;
-
-//	assign led_g[2] = vga_en;
-//	assign vga_addr = coord_y*640 + coord_x; 
 
 	memory Memory_Inst(
 		//*	System Signals
@@ -110,8 +106,6 @@ module FPGA_MIP (
 		//* Input Data
 		.fltr_img   (fltr_img),
 		.vga_addr	(vga_addr),
-		//*	Output Flags
-	//	.vga_en  	(vga_en),
 		//* Output Data
 		.orig_img   (orig_img),
 		.red		(red),
