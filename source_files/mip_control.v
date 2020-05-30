@@ -10,7 +10,6 @@ module mip_control
     input                pll_lock,      // PLL Done
     input                dilation_done, // Dilation Filter Done
     input                erosion_done,  // Erosion Filter Done
- //   input                vga_en,        // VGA can start working
 //* Output Flags
     output reg           rom_flag,      // Indicator to start read from ROM
     output reg           dilation_en,   // Indicator to start using Filter Blocks
@@ -81,10 +80,10 @@ module mip_control
 
                 FILTER: begin
                     fltr_en <= 1'b1;
-                    if (dilation_done || erosion_done) begin
+                  //  if (dilation_done || erosion_done) begin
                         //TODO: Fix the logic here.
                         state    <= RAM;
-                    end
+                  //  end
                 end
 
                 RAM: begin

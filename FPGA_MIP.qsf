@@ -148,5 +148,5 @@ set_global_assignment -name VERILOG_FILE source_files/mip_control.v
 set_global_assignment -name VERILOG_FILE source_files/FPGA_MIP.v
 set_global_assignment -name QIP_FILE source_files/pll/pll.qip
 set_global_assignment -name SIGNALTAP_FILE signal_tap/stp2.stp
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name SLD_FILE db/stp2_auto_stripped.stp
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
