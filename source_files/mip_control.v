@@ -80,10 +80,10 @@ module mip_control
 
                 FILTER: begin
                     fltr_en <= 1'b1;
-                    if (dilation_done || erosion_done) begin
+                  //  if (dilation_done || erosion_done) begin
                         //TODO: Fix the logic here.
                         state    <= RAM;
-                    end
+                  //  end
                 end
 
                 RAM: begin
